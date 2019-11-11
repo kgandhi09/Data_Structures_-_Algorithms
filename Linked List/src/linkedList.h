@@ -11,7 +11,7 @@
 class linkedList{
 private:
 
-	typedef struct node{
+	struct node{
 		int data;
 		node* next;
 	};

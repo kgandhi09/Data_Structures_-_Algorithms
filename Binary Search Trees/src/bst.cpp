@@ -38,8 +38,8 @@ bst::node* bst::addNode(int addData, node* np){
 		np->left = addNode(addData, np->left);
 	}
 	else if (addData >= np->data){
-			np->right = addNode(addData, np->right);
-		}
+		np->right = addNode(addData, np->right);
+	}
 
 	return np;
 }
@@ -72,6 +72,39 @@ void bst::printInOrder(){
 	printInOrder(root);
 }
 
+bst::node* bst::returnNode(int data, node* np){
+	node* result = new node;
+	if(np != NULL){
+		if(np->data == data){
+			result = np;
+		}
+		else if(data < np->data){
+			np->left = returnNode(data, np->left);
+		}
+		else if(data > np->data){
+			np->right = returnNode(data, np->right);
+		}
+	}
+	else{
+		result = NULL;
+	}
+	return result;
+}
+
+bst::node* bst::returnNode(int data){
+	return returnNode(data, root);
+}
+
+int bst::returnRootData(){
+	int result = 0;
+	if(root == NULL){
+		result = -1000;
+	}
+	else{
+		result = root->data;
+	}
+	return result;
+}
 
 
 

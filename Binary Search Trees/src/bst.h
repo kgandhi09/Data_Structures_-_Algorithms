@@ -19,13 +19,15 @@ private:
 	node* root;
 	node* addNode(int addData, node* np);
 	void printInOrder(node* root);
+	node* returnNode(int data, node* np);
 public:
 	bst();
 	node* createLeaf(int key);
 	void addNode(int addData);
 	void delNode(int delData);
 	void printInOrder();
-
+	node* returnNode(int data);
+	int returnRootData();
 };
 
 

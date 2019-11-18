@@ -9,7 +9,7 @@
 #define BST_H_
 
 class bst{
-private:
+public:
 	struct node{
 		int data;
 		node* left;
@@ -28,6 +28,7 @@ public:
 	void printInOrder();
 	node* returnNode(int data);
 	int returnRootData();
+	void printChildren(int data);
 };
 
 

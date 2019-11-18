@@ -19,4 +19,7 @@ int main(int argc, char** argv){
 //	cout << testTree->root->left->data << endl;
 //	cout << testTree->root->right->data << endl;
 	testTree->printInOrder();
+
+	testTree->printChildren(5);
+
 }

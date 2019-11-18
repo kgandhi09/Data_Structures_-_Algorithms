@@ -52,15 +52,13 @@ void bst::addNode(int addData){
 
 void bst::printInOrder(node* root){
 	if (root != NULL){
-		cout << root->data << " " ;
+		cout << root->data << " " << endl ;
 		if(root->left != NULL){
 			printInOrder(root->left);
 		}
 		if(root->right != NULL){
 			printInOrder(root->right);
 		}
-
-
 	}
 	else{
 		cout << "Tree is empty\n";
@@ -73,22 +71,28 @@ void bst::printInOrder(){
 }
 
 bst::node* bst::returnNode(int data, node* np){
-	node* result = new node;
 	if(np != NULL){
 		if(np->data == data){
-			result = np;
+			cout << "step 2 : " << np->data << " : " << np << endl;
+			return np;
+
 		}
 		else if(data < np->data){
-			np->left = returnNode(data, np->left);
+			cout << "step 1 : " << np->data << " : " << np << endl;
+			np = returnNode(data, np->left);
+
 		}
 		else if(data > np->data){
-			np->right = returnNode(data, np->right);
+			np = returnNode(data, np->right);
 		}
 	}
 	else{
-		result = NULL;
+		return NULL;
 	}
-	return result;
+
+	return np;
+	//cout << np->data << " returnNode" << endl;
+
 }
 
 bst::node* bst::returnNode(int data){
@@ -106,6 +110,25 @@ int bst::returnRootData(){
 	return result;
 }
 
+void bst::printChildren(int data){
+	node* np = returnNode(data);
+	cout << np->data;
+	//cout << np->data << endl;
+	/*
+	if(np != NULL){
+		cout << "Parent Child : " << np->data << endl;
+		if(np->left == NULL){
+			cout << "Left Child : NULL" << endl;
+		}
+		else if(np->left != NULL){
+			cout << "Left Child : " << np->left->data << endl;
+		}
+	}
+	else{
+		cout << "Node " << data << "is not in tree!"<< endl;
+	}
+	*/
+}
 
 
 //	if (root == NULL){

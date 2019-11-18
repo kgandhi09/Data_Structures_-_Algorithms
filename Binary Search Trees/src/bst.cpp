@@ -77,11 +77,11 @@ bst::node* bst::returnNode(int data, node* np){
 
 		}
 		else if(data < np->data){
-			np = returnNode(data, np->left);
+			return returnNode(data, np->left);
 
 		}
 		else if(data > np->data){
-			np = returnNode(data, np->right);
+			return returnNode(data, np->right);
 		}
 	}
 	else{
@@ -130,6 +130,23 @@ void bst::printChildren(int data){
 
 }
 
+int bst::findSmallestData(node* np){
+	if(np != NULL){
+		if(np->left == NULL){
+			return np->data;
+		}
+		else{
+			return findSmallestData(np->left);
+		}
+	}
+	else{
+		cout << "Tree is empty!" << endl;
+		return -1000;
+	}
+}
+int bst::findSmallestData(){
+	return findSmallestData(root);
+}
 
 //	if (root == NULL){
 //		root = createLeaf(addData);

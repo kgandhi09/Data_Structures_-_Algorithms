@@ -15,12 +15,12 @@ int main(int argc, char** argv){
 	testTree->addNode(10);
 	testTree->addNode(5);
 	testTree->addNode(3);
+	testTree->addNode(2);
 	testTree->addNode(15);
-//	cout << testTree->root->data << endl;
-//	cout << testTree->root->left->data << endl;
-//	cout << testTree->root->right->data << endl;
+
 	testTree->printInOrder();
-
+	cout << "\n" ;
 	testTree->printChildren(5);
-
+	cout << "\n" ;
+	cout << "Smallest data in tree : " << testTree->findSmallestData() << endl;
 }

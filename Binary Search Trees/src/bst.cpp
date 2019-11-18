@@ -13,43 +13,111 @@
 
 using namespace std;
 
+
+
+
 bst::bst(){
 	root = NULL;
 }
 
 bst::node* bst::createLeaf(int data){
-	node* n = new node;
-	n->data = data;
-	n->left = NULL;
-	n->right = NULL;
+	node* curRoot=new node;
+	curRoot->data = data;
+	curRoot->left = NULL;
+	curRoot->right = NULL;
 
-	return n;
+	return curRoot;
 }
 
-void bst::addNode(int addData, node* root){
-	if(root == NULL){
-		root = createLeaf(addData);
+bst::node* bst::addNode(int addData, node* np){
+
+	if(np == NULL){
+		np = createLeaf(addData);
 	}
-	else if(addData < root->data){
-		if(root->left == NULL){
-			root->left = createLeaf(addData);
-		}
-		else{
-			//curr = curr->left;
-			addNode(addData, root->left);
-		}
+	else if (addData <= np->data){
+		np->left = addNode(addData, np->left);
 	}
-	else if(addData > root->data){
-		if(root->right == NULL){
-			root->right = createLeaf(addData);
+	else if (addData >= np->data){
+			np->right = addNode(addData, np->right);
 		}
-		else{
-			//curr = curr->right;
-			addNode(addData, root->right);
+
+	return np;
+}
+
+void bst::addNode(int addData){
+
+	root = addNode(addData, root);
+
+}
+
+void bst::printInOrder(node* root){
+	if (root != NULL){
+		cout << root->data << " " ;
+		if(root->left != NULL){
+			printInOrder(root->left);
 		}
+		if(root->right != NULL){
+			printInOrder(root->right);
+		}
+
+
 	}
 	else{
-		cout << "The Key" << addData << "has already been added to the tree!\n";
+		cout << "Tree is empty\n";
 	}
 
 }
+
+void bst::printInOrder(){
+	printInOrder(root);
+}
+
+
+
+
+//	if (root == NULL){
+//		root = createLeaf(addData);
+//		return;
+//	}
+//	node* newNode = createLeaf(addData);
+//	node* leaf = root;
+//	while (true){
+//		if(addData < leaf->data){
+//			if (leaf->left == NULL) {
+//				leaf->left = newNode;
+//				break;
+//			}
+//			leaf = leaf->left;
+//		}
+//		else if(addData > leaf->data){
+//			if (leaf->right == NULL) {
+//				leaf->right = newNode;
+//				break;
+//			}
+//			leaf = leaf->right;
+//		}
+//	}
+
+//	if(np == NULL){
+//		np = createLeaf(addData);
+//	}
+//	else if(addData < np->data){
+//		if(np->left == NULL){
+//			np->left = createLeaf(addData);
+//		}
+//		else{
+//			np->left = addNode(addData, np->left);
+//		}
+//	}
+//	else if(addData > np->data){
+//		if(np->right == NULL){
+//			np->right = createLeaf(addData);
+//		}
+//		else{
+//			np->right = addNode(addData, np->right);
+//		}
+//	}
+//	else{
+//		cout << "The Key" << addData << "has already been added to the tree!\n";
+//	}
+

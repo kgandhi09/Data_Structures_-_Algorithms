@@ -9,19 +9,23 @@
 #define BST_H_
 
 class bst{
-public:
+private:
 	struct node{
 		int data;
 		node* left;
 		node* right;
 	};
-	node* root;
 
+	node* root;
+	node* addNode(int addData, node* np);
+	void printInOrder(node* root);
 public:
 	bst();
 	node* createLeaf(int key);
-	void addNode(int addData, node* root);
+	void addNode(int addData);
 	void delNode(int delData);
+	void printInOrder();
+
 };
 
 

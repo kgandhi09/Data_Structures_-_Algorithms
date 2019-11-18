@@ -10,15 +10,13 @@ using namespace std;
 
 int main(int argc, char** argv){
 
-	bst* test=new bst();
-	test->addNode(10, test->root);
-	test->addNode(7, test->root);
-	test->addNode(11, test->root);
-	test->addNode(6, test->root);
 
-	//cout << test->root->data << endl;
-//	cout << test->root->left->data << endl;
-//	cout << test->root->right->data << endl;
-//	cout << test->root->left->left->data <<endl;
-
+	bst* testTree=new bst();
+	testTree->addNode(10);
+	testTree->addNode(5);
+	testTree->addNode(15);
+//	cout << testTree->root->data << endl;
+//	cout << testTree->root->left->data << endl;
+//	cout << testTree->root->right->data << endl;
+	testTree->printInOrder();
 }

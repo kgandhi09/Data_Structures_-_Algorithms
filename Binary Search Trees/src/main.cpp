@@ -14,6 +14,7 @@ int main(int argc, char** argv){
 	bst* testTree=new bst();
 	testTree->addNode(10);
 	testTree->addNode(5);
+	testTree->addNode(3);
 	testTree->addNode(15);
 //	cout << testTree->root->data << endl;
 //	cout << testTree->root->left->data << endl;

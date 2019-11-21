@@ -31,20 +31,22 @@ int main(int argc, char** argv){
 	testTree2->addNode(50);
 	testTree2->addNode(60);
 	testTree2->addNode(20);
-//	testTree2->addNode(40);
-//	testTree2->addNode(70);
-//	testTree2->addNode(60);
-//	testTree2->addNode(80);
+	testTree2->addNode(40);
+	testTree2->addNode(70);
+	testTree2->addNode(80);
 
 	testTree2->printInOrder();
 
 	//testTree2->removeNode(20);
 
 	cout << "\n";
-	testTree2->printChildren(50);
+	testTree2->printChildren(20);
 
 	cout << "\n";
 
 	testTree2->removeNode(50);
 
+	cout << "\n";
+
+	testTree2->printInOrder();
 }

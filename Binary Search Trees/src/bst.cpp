@@ -149,33 +149,40 @@ int bst::findSmallestData(){
 }
 
 bst::node* bst::removeNode(int data, node* np){
-	if(root == NULL){
-		return root;
+	if(np == NULL){
+		return np;
 	}
-	if (data < root->data){
-		root->left = removeNode(data, root->left);
+	if (data < np->data){
+		np->left = removeNode(data, np->left);
 	}
-	else if (data > root->data){
-		root->right = removeNode(data, root->right);
+	else if (data > np->data){
+		np->right = removeNode(data, np->right);
 	}
 	else{
-		if(root->left == NULL && root->right != NULL){
-			node* temp = root->right;
-			free(root);
+		if(np->left == NULL && np->right != NULL){
+			node* temp = np->right;
+			delete np;
 			return temp;
 		}
-		else if(root->left != NULL && root->right == NULL){
-			node* temp = root->left;
-			free(root);
+		else if(np->left != NULL && np->right == NULL){
+			node* temp = np->left;
+			delete np;
 			return temp;
+		}
+		else if (np->left == NULL && np->right == NULL){
+			node* temp = np;
+			np = NULL;
+			delete temp;
+		}
+		else if (np->left != NULL && np->right != NULL){
+			int smallestInRightSubTree = findSmallestData(root->right);
+			node* temp = returnNode(smallestInRightSubTree);
+			np->data = temp->data;
+			np->right = removeNode(temp->data, root->right);
 		}
 
-		int smallestInRightSubTree = findSmallestData(root->right);
-		node* temp = returnNode(smallestInRightSubTree);
-		root->data = temp->data;
-		root->right = removeNode(temp->data, root->right);
 	}
-	return root;
+	return np;
 }
 
 bst::node* bst::removeNode(int data){

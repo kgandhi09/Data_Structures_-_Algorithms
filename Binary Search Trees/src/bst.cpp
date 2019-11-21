@@ -148,6 +148,79 @@ int bst::findSmallestData(){
 	return findSmallestData(root);
 }
 
+bst::node* bst::removeNode(int data, node* np){
+	if(root == NULL){
+		return root;
+	}
+	if (data < root->data){
+		root->left = removeNode(data, root->left);
+	}
+	else if (data > root->data){
+		root->right = removeNode(data, root->right);
+	}
+	else{
+		if(root->left == NULL && root->right != NULL){
+			node* temp = root->right;
+			free(root);
+			return temp;
+		}
+		else if(root->left != NULL && root->right == NULL){
+			node* temp = root->left;
+			free(root);
+			return temp;
+		}
+
+		int smallestInRightSubTree = findSmallestData(root->right);
+		node* temp = returnNode(smallestInRightSubTree);
+		root->data = temp->data;
+		root->right = removeNode(temp->data, root->right);
+	}
+	return root;
+}
+
+bst::node* bst::removeNode(int data){
+	return removeNode(data, root);
+}
+
+//void bst::removeRootMatch(){
+//	if(root != NULL){
+//		node* delPtr = root;
+//		int rootData = root->data;
+//		int smallestInRightSubTree;
+//
+//		//Case 0: 0 children
+//		if(root->left == NULL && root->right == NULL){
+//			root = NULL;
+//			delete delPtr;
+//		}
+//
+//		//Case 1: 1 child
+//		else if(root->right == NULL && root->right != NULL){
+//			root = root->right;
+//			delPtr->right = NULL;
+//			delete delPtr;
+//			cout << "The root node with data " << rootData << " was deleted!" << " The new root contains data " << root->data << endl;
+//		}
+//		else if(root->left != NULL && root->right == NULL){
+//			root = root->left;
+//			delPtr->left = NULL;
+//			delete delPtr;
+//			cout << "The root node with data " << rootData << " was deleted!" << " The new root contains the data " << root->data << endl;
+//		}
+//
+//		//Case 2: 2 children
+//		else if(root->right != NULL && root->left != NULL){
+//			smallestInRightSubTree = findSmallestData(root->right);
+//			//removeNode(smallestInRightSubTree, root);
+//			root->data = smallestInRightSubTree;
+//			cout << "The root data containing data " << rootData << " was overwritten with data " << root->data << endl;
+//		}
+//	}
+//	else{
+//		cout << "Cant remove, Tree is already empty!" << endl;
+//	}
+//}
+
 //	if (root == NULL){
 //		root = createLeaf(addData);
 //		return;

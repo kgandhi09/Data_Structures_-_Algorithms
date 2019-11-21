@@ -161,12 +161,14 @@ bst::node* bst::removeNode(int data, node* np){
 	else{
 		if(np->left == NULL && np->right != NULL){
 			node* temp = np->right;
-			delete np;
+			np->right = NULL;
+			//delete np;
 			return temp;
 		}
 		else if(np->left != NULL && np->right == NULL){
 			node* temp = np->left;
-			delete np;
+			np->left = NULL;
+			//delete np;
 			return temp;
 		}
 		else if (np->left == NULL && np->right == NULL){

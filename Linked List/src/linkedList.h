@@ -9,7 +9,7 @@
 #define LINKEDLIST_H_
 
 class linkedList{
-private:
+public:
 
 	struct node{
 		int data;
@@ -18,7 +18,9 @@ private:
 
 	node* head;
 	node* curr;
-	node* temp;
+
+	void addNode(int addData, node* np);
+	void delNode(int delData, node* np);
 
 public:    // This is where function prototypes go
 	linkedList();

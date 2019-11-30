@@ -20,7 +20,11 @@ int main(int argc, char** argv){
 	Kushal.addNode(2);
 	Kushal.addNode(3);
 	Kushal.printList();
-	Kushal.delNode(1);
-	Kushal.printList();
+	cout << endl;
+//	Kushal.delNode(2);
+//
+//	cout << endl;
+//
+//	Kushal.printList();
 
 }

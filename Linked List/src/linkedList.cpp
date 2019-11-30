@@ -15,18 +15,17 @@ using namespace std;
 linkedList::linkedList(){
 	head = NULL;
 	curr = NULL;
-	temp = NULL;
 
 }
 
-void linkedList::addNode(int addData){
+void linkedList::addNode(int addData, node* np){
 	node* n = new node;
 	n->next = NULL;
 	n->data = addData;
-	if(head != NULL){
-		curr = head;
-		while(curr->next != NULL){
-			curr = curr->next;
+	if(np != NULL){
+		curr = np;
+		if(curr->next != NULL){
+			addNode(addData, np->next);
 		}
 		curr->next = n;
 	}
@@ -35,25 +34,26 @@ void linkedList::addNode(int addData){
 	}
 }
 
-void linkedList::delNode(int delData){
-	node* delPtr = new node;
-	temp = head;
-	curr = head;
-	while(curr != NULL && curr->data != delData){
-		temp = curr;
-		curr = curr->next;
-	}
-	if(curr == NULL ){
-		cout << delData << " was not in the linked list!\n";
-		delete delPtr;
+void linkedList::addNode(int addData){
+	addNode(addData, head);
+}
+
+void linkedList::delNode(int delData, node* np){
+	node* dp = new node;
+	if(np->data == delData){
+		np->data = np->next->data;
+		dp = np->next;
+		np->next = np->next->next;
+
+		delete dp;
 	}
 	else{
-		delPtr = curr;
-		curr = curr->next;
-		temp->next = curr;
-		delete delPtr;
-		cout << "The element " << delData << " was deleted from the linked list!\n";
+		delNode(delData, np->next);
 	}
+}
+
+void linkedList::delNode(int delData){
+	delNode(delData, head);
 }
 
 void linkedList::printList(){

@@ -9,7 +9,7 @@
 #define BST_H_
 
 class bst{
-public:
+private:
 	struct node{
 		int data;
 		node* left;

@@ -14,8 +14,6 @@
 using namespace std;
 
 
-
-
 bst::bst(){
 	root = NULL;
 }
@@ -152,7 +150,7 @@ bst::node* bst::removeNode(int data, node* np){
 	if(np == NULL){
 		return np;
 	}
-	if (data < np->data){
+	else if (data < np->data){
 		np->left = removeNode(data, np->left);
 	}
 	else if (data > np->data){
